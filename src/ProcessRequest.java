@@ -272,7 +272,8 @@ public class ProcessRequest extends HttpServlet {
 		Set<Map.Entry<String, JsonElement>> entrySet = recordGson.entrySet();
 		String productID = null;
 
-		//get values
+		//construct the SQL query from the JSON elements.
+        //the valuesPortion String will contain the values we want to update in the record
 		{
 			Iterator<Map.Entry<String, JsonElement>> iterator = entrySet.iterator();
 			while(iterator.hasNext()) {
@@ -2083,6 +2084,8 @@ public class ProcessRequest extends HttpServlet {
 			}
 			stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
 			rs = stmt.executeQuery(query);
+            //NOTE: if we close this immediately, we will lose the ResultSet.  the Statement will close itself anyway
+            //      after the garbage collector notices it has no references.
 			//stmt.close();
 		} catch(Exception e) {
 			System.out.println(e.toString());

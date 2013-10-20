@@ -11,13 +11,13 @@
     </description>
 
     <servlet>
-        <servlet-name>ProcessRequest</servlet-name>
-        <servlet-class>ProcessRequest</servlet-class>
+        <servlet-name>ProcessRequest</servlet-name>  <!-- the name we assign to the mapping (arbitrary) -->
+        <servlet-class>ProcessRequest</servlet-class> <!-- the Java class the name maps to (should be a full package path ex. com.package.MyClass) -->
     </servlet>
 
     <servlet-mapping>
-        <servlet-name>ProcessRequest</servlet-name>
-        <url-pattern>/ProcessRequest</url-pattern>
+        <servlet-name>ProcessRequest</servlet-name>  <!-- the arbitrary name we assigned above -->
+        <url-pattern>/ProcessRequest</url-pattern>   <!-- the URL pattern we want mapped to this name (referred to in GET request ex. http://localhost/ProcessRequest) -->
     </servlet-mapping>
 
 </web-app>
